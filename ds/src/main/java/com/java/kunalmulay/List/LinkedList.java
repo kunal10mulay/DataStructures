@@ -76,11 +76,4 @@ public class LinkedList <T> {
 		return buffer.toString();
 	}
 	
-	public static void main(String args[]) {
-		LinkedList<Integer> linkedList = new LinkedList<>(new Node<Integer>(1));
-		linkedList.add(new Node<Integer>(2));
-		linkedList.display();
-	}
-
-	
 }
