@@ -149,7 +149,7 @@ public class ListTests {
 		assertEquals(linkedList.length(), 5);
 
 	}
-	
+
 	@Test
 	public void nthfromlast() {
 		LinkedList<String> linkedList = new LinkedList<>();
@@ -164,6 +164,23 @@ public class ListTests {
 
 		assertTrue(linkedList.nthFromEnd(5).equals(new Node<String>("A")));
 
+	}
+
+	@Test
+	public void reverse() {
+		LinkedList<String> linkedList = new LinkedList<>();
+		linkedList.add(new Node<String>("A"));
+		linkedList.add(new Node<String>("B"));
+		linkedList.add(new Node<String>("C"));
+		linkedList.add(new Node<String>("D"));
+		linkedList.add(new Node<String>("E"));
+		linkedList.revrseRecursive(linkedList.getHead());
+
+		assertEquals(linkedList.displayString(), "E : D : C : B : A");
+
+		linkedList.reverse();
+
+		assertEquals(linkedList.displayString(), "A : B : C : D : E");
 	}
 
 }

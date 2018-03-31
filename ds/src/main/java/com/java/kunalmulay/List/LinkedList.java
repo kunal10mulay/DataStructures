@@ -1,5 +1,7 @@
 package com.java.kunalmulay.List;
 
+import java.util.Currency;
+
 import javax.management.RuntimeErrorException;
 
 /**
@@ -195,30 +197,65 @@ public class LinkedList<T> implements List<T> {
 		}
 		return count;
 	}
-	
+
 	/**
 	 * Find nth node from the end of linked list
+	 * 
 	 * @return nth node from end
 	 */
-	public Node<T> nthFromEnd(int n){
-		// Nth node from end is m-nth node from start, where m is length of 
+	public Node<T> nthFromEnd(int n) {
+		// Nth node from end is m-nth node from start, where m is length of
 		// List. To solve this problem in single iteration, take two pointers,
 		// First pointer moves until it reaches n, then we start second pointer
 		// until end of first List. The current node pointed by ptr2 is m-nth Node.
-		
+
 		Node<T> ptr1 = getHead();
 		Node<T> ptr2 = getHead();
-		while (n > 0 && ptr1!=null) {
+		while (n > 0 && ptr1 != null) {
 			ptr1 = ptr1.next;
 			n--;
 		}
-		if(ptr1 == null && n > 1) {
+		if (ptr1 == null && n > 1) {
 			throw new RuntimeException("Index out of bound");
 		}
-		while(ptr1!=null) {
-			ptr2=ptr2.next;
-			ptr1=ptr1.next;
+		while (ptr1 != null) {
+			ptr2 = ptr2.next;
+			ptr1 = ptr1.next;
 		}
 		return ptr2;
+	}
+
+	/**
+	 * Reverse linkedList
+	 */
+	public void reverse() {
+		Node<T> current = getHead();
+		Node<T> previuos = null;
+		while (current != null) {
+			Node<T> temp = current.next;
+			current.next = previuos;
+			previuos = current;
+			current = temp;
+		}
+		setHead(previuos);
+	}
+
+	/**
+	 * Recursive reverse Linked list
+	 * 
+	 * @param node
+	 */
+	public void revrseRecursive(Node<T> node) {
+		if (node == null)
+			return;
+		if (node.next == null) {
+			setHead(node);
+			return;
+		} else {
+			revrseRecursive(node.next);
+			Node<T> next = node.next;
+			next.next = node;
+		}
+		node.next = null;
 	}
 }
