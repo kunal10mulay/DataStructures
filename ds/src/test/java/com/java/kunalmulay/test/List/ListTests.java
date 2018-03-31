@@ -48,4 +48,17 @@ public class ListTests {
 	     linkedList.appendList(linkedList2);
 	     assertEquals(linkedList.displayString(), "A : B : C : D : E : F");
 	 }
+	 
+	 @Test
+	 public void containsList() {
+		 LinkedList<String> linkedList = new LinkedList<>();
+		 linkedList.add(new Node<String>("A"));
+	     linkedList.add(new Node<String>("B"));
+	     linkedList.add(new Node<String>("C"));
+		 linkedList.add(new Node<String>("D"));
+	     linkedList.add(new Node<String>("E"));
+	     
+	     assertEquals(linkedList.contains(new Node<String>("C")), true);
+	     assertEquals(linkedList.contains(new Node<String>("F")), false);
+	 }
 }

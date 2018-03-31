@@ -1,5 +1,11 @@
 package com.java.kunalmulay.List;
 
+/**
+ * Interface for List
+ * @author kunal mulay
+ *
+ * @param <T>
+ */
 public interface List<T> {
 	
 	/**
@@ -35,5 +41,9 @@ public interface List<T> {
 	 * @param mode
 	 */
 	public void appendList(List<T> list);
-
+	
+	/**
+	 * Contains function checks if node contains in a linked list.
+	 */
+	public boolean contains(Node<T> node);
 }

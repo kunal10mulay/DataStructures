@@ -14,4 +14,15 @@ public class Node<T> {
 		this.data = data;
 		this.next = null;
 	}
+	
+	/**
+	 * override equals method to make data equal.
+	 * Implement equals method if custom object is used.
+	 * @param obj
+	 * @return
+	 */
+	public boolean equals(Node<T> obj) 
+	{
+		return this.data == obj.data;
+	}
 }

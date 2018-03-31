@@ -114,4 +114,14 @@ public class LinkedList<T> implements List<T> {
 		}	
 	}
 
+	@Override
+	public boolean contains(Node<T> node) {
+		Node <T> current = getHead();
+		while(current.next != null) {
+			if(node.equals(current))
+				return true;
+			current = current.next;
+		}
+		return false;
+	}
 }
