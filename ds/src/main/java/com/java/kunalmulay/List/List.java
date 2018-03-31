@@ -43,7 +43,32 @@ public interface List<T> {
 	public void appendList(List<T> list);
 	
 	/**
-	 * Contains function checks if node contains in a linked list.
+	 * Contains function checks if linked list contain specified node.
 	 */
 	public boolean contains(Node<T> node);
-}
+	
+	/**
+	 * Get Node of a linked list by index.
+	 * @param index
+	 * @return returns node of a linked list
+	 */
+	public Node<T> get(int index);
+	
+	/**
+	 * Remove Node at index
+	 * @param index
+	 */
+	public void remove(int index);
+	
+	/**
+	 * Remove First occurrence of Node
+	 * @param node
+	 */
+	public void remove(Node <T> node);
+	
+	/**
+	 * Returns length of the List
+	 * @return length of list
+	 */
+	public int length();
+ }

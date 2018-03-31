@@ -1,5 +1,7 @@
 package com.java.kunalmulay.List;
 
+import javax.management.RuntimeErrorException;
+
 /**
  * A Single Linked list implementation and some operations
  * on this list. 
@@ -123,5 +125,76 @@ public class LinkedList<T> implements List<T> {
 			current = current.next;
 		}
 		return false;
+	}
+
+	@Override
+	public Node<T> get(int index) {
+		if(index < 0)
+			throw new RuntimeException("Index out of bound");
+		int count = 0;
+		Node<T> current = getHead();
+		while (current != null && count < index) {
+			count ++;
+			current = current.next;
+		}
+		if(index == count)
+			return current;
+		else
+			throw new RuntimeException("Index out of bound");
+	}
+
+	@Override
+	public void remove(int index) {
+		if(index < 0)
+			throw new RuntimeException("Index out of bound");
+		int count = 1;
+		Node<T> current = getHead();
+		Node<T> previous = null;
+		if(index == 0 && current != null)  {
+			setHead(current.next);
+		} else if(index == 0 && current == null)
+			throw new RuntimeException("Index out of bound");
+		else {
+			while(current != null) {
+				previous = current;
+				current = current.next;
+				if(index == count) {
+					previous.next = current.next;
+				}
+				else if(count > index) {
+					throw new RuntimeException("Index out of bound");
+				}
+				count ++;
+			}
+		}
+	}
+
+	@Override
+	public void remove(Node<T> node) {
+		Node <T> current = getHead();
+		Node <T> previous = null;
+		if(current.equals(node)) {
+			setHead(current.next);
+			return;
+		}
+		while(current != null) {
+			if(current.equals(node)) {
+				previous.next =current.next;
+				return;
+			}
+			previous = current;
+			current = current.next;
+		}
+	}
+
+	@Override
+	public int length() {
+		int count = 0;
+		Node<T> current = getHead();
+		while(current != null) {
+			current = current.next;
+			count++;
+		}
+		return count;
 	}
 }

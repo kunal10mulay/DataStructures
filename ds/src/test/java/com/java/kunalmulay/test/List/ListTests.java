@@ -61,4 +61,93 @@ public class ListTests {
 	     assertEquals(linkedList.contains(new Node<String>("C")), true);
 	     assertEquals(linkedList.contains(new Node<String>("F")), false);
 	 }
+	 
+	 @Test
+	 public void getFromList() {
+		 LinkedList<String> linkedList = new LinkedList<>();
+		 linkedList.add(new Node<String>("A"));
+	     linkedList.add(new Node<String>("B"));
+	     linkedList.add(new Node<String>("C"));
+		 linkedList.add(new Node<String>("D"));
+	     linkedList.add(new Node<String>("E"));
+	     
+	     assertTrue(linkedList.get(2).equals(new Node<String> ("C")));
+	     
+	     // assert true if exception is produced
+	     try {
+	    	 linkedList.get(10);
+	     }catch (RuntimeException e) {
+			assertTrue("Got exception", true);
+		}
+	 }
+	 
+	 @Test
+	 public void removeFromListByindex() {
+		 LinkedList<String> linkedList = new LinkedList<>();
+		 linkedList.add(new Node<String>("A"));
+	     linkedList.add(new Node<String>("B"));
+	     linkedList.add(new Node<String>("C"));
+		 linkedList.add(new Node<String>("D"));
+	     linkedList.add(new Node<String>("E"));
+	     linkedList.remove(0);
+	     
+	     assertEquals(linkedList.displayString(), "B : C : D : E");
+	     
+	     // assert true if exception is produced
+	     try {
+	    	 linkedList.remove(10);
+	     }catch (RuntimeException e) {
+			assertTrue("Got exception", true);
+		}
+	     
+	     try {
+	    	 new LinkedList<String>().remove(0);
+	     } catch (RuntimeException e) {
+				assertTrue("Got exception", true);
+			}
+	     
+	     try {
+	    	 new LinkedList<String>().remove(-1);
+	     } catch (RuntimeException e) {
+				assertTrue("Got exception", true);
+			}
+	 }
+	 
+	 @Test
+	 public void removeFromListByNode() {
+		 LinkedList<String> linkedList = new LinkedList<>();
+		 linkedList.add(new Node<String>("A"));
+	     linkedList.add(new Node<String>("B"));
+	     linkedList.add(new Node<String>("C"));
+		 linkedList.add(new Node<String>("D"));
+	     linkedList.add(new Node<String>("E"));
+	     linkedList.remove(new Node<String>("A"));
+	     
+	     assertEquals(linkedList.displayString(), "B : C : D : E");
+	     
+	     linkedList.remove(new Node<String>("C"));
+	     
+	     assertEquals(linkedList.displayString(), "B : D : E");
+	     
+	     linkedList.remove(new Node<String>("E"));
+	     
+	     assertEquals(linkedList.displayString(), "B : D");
+	 }
+	 
+	 @Test
+	 public void lengthOfList() {
+		 LinkedList<String> linkedList = new LinkedList<>();
+		 
+	     assertEquals(linkedList.length(), 0);
+		 
+		 linkedList.add(new Node<String>("A"));
+	     linkedList.add(new Node<String>("B"));
+	     linkedList.add(new Node<String>("C"));
+		 linkedList.add(new Node<String>("D"));
+	     linkedList.add(new Node<String>("E"));
+	     
+	     assertEquals(linkedList.length(), 5);
+	   
+	 }
+	 
 }
